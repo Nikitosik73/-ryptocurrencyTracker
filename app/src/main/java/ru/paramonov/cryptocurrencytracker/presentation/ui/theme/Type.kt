@@ -1,4 +1,4 @@
-package ru.paramonov.cryptocurrencytracker.ui.theme
+package ru.paramonov.cryptocurrencytracker.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
