@@ -5,8 +5,8 @@ object MessageData {
     val messageList = listOf(
         MessageChat(
             id = 5,
-            message = "Привет! Пору покупать биткоин",
-            username = "Anto"
+            message = "Привет! Пора покупать биткоин",
+            username = "Anton"
         ),
         MessageChat(
             id = 6,

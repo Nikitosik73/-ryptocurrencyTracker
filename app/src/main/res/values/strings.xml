@@ -6,4 +6,8 @@
     <string name="enter_lastname">Введите вашу фамилию</string>
     <string name="enter_password">Введите ваш пароль</string>
     <string name="fargot_password">Забыли пароль?</string>
+    <string name="home_screen">Home</string>
+    <string name="news_screen">News</string>
+    <string name="chat_screen">Chat</string>
+    <string name="profile_screen">Profile</string>
 </resources>
