@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import ru.paramonov.cryptocurrencytracker.presentation.screens.chat.ChatScreen
+import ru.paramonov.cryptocurrencytracker.presentation.screens.registaration.RegistrationScreen
 import ru.paramonov.cryptocurrencytracker.presentation.ui.theme.СryptocurrencyTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             СryptocurrencyTrackerTheme {
-                ChatScreen {}
+
             }
         }
     }
