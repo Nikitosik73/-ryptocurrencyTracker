@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">СryptocurrencyTracker</string>
+    <string name="registration">Регистрация</string>
+    <string name="enter_username">Введите ваш никнейм</string>
+    <string name="enter_name">Введите ваше имя</string>
+    <string name="enter_lastname">Введите вашу фамилию</string>
+    <string name="enter_password">Введите ваш пароль</string>
+    <string name="fargot_password">Забыли пароль?</string>
 </resources>
