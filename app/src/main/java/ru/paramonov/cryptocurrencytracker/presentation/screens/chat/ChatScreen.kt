@@ -44,12 +44,13 @@ import ru.paramonov.cryptocurrencytracker.R
 import ru.paramonov.cryptocurrencytracker.presentation.ui.theme.LightGrey
 
 @Composable
-fun ChatScreen(onPopBackStack: () -> Unit) {
+fun ChatScreen(coinName: String, onPopBackStack: () -> Unit) {
     val viewModel: MessageViewModel = viewModel()
     val messages = viewModel.messages.collectAsStateWithLifecycle()
     val currentMessage = viewModel.currentMessage.collectAsStateWithLifecycle()
 
     ChatContent(
+        coinName = coinName,
         viewModel = viewModel,
         currentMessage = currentMessage,
         messages = messages,
@@ -60,6 +61,7 @@ fun ChatScreen(onPopBackStack: () -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ChatContent(
+    coinName: String,
     viewModel: MessageViewModel,
     currentMessage: State<String>,
     messages: State<List<MessageChat>>,
@@ -69,7 +71,7 @@ private fun ChatContent(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "BTC", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    Text(text = coinName, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 },
                 navigationIcon = {
                     IconButton(onClick = { onPopBackStack() }) {
@@ -120,7 +122,7 @@ private fun MessageList(
                 MessageItem(message = message)
             }
         }
-        
+
         Spacer(modifier = Modifier.weight(1f))
 
         MessageSend(currentMessage = currentMessage, viewModel = viewModel)
@@ -135,7 +137,7 @@ private fun MessageSend(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = 16.dp),
+            .padding(top = 16.dp, end = 16.dp, start = 16.dp, bottom = 72.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         TextField(
@@ -143,7 +145,9 @@ private fun MessageSend(
             onValueChange = { message ->
                 viewModel.changeMessage(message = message)
             },
-            modifier = Modifier.weight(1f).padding(8.dp)
+            modifier = Modifier
+                .weight(1f)
+                .padding(8.dp)
         )
 
         IconButton(
