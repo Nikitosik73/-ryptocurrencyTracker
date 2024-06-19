@@ -1,15 +1,15 @@
 package com.example.cryptoapp.data.mapper
 
-import com.example.cryptoapp.data.database.model.NewsInfoDbModel
-import com.example.cryptoapp.data.network.model.news.NewsContainerDto
-import com.example.cryptoapp.data.network.model.news.NewsInfoDto
-import com.example.cryptoapp.data.network.model.news.TitleNewsDto
-import com.example.cryptoapp.domain.entity.news.NewsInfo
+import ru.paramonov.cryptocurrencytracker.data.database.model.NewsDBO
+import ru.paramonov.cryptocurrencytracker.data.network.model.news.NewsContainerDto
+import ru.paramonov.cryptocurrencytracker.data.network.model.news.NewsInfoDto
+import ru.paramonov.cryptocurrencytracker.data.network.model.news.TitleNewsDto
+import ru.paramonov.cryptocurrencytracker.domain.entity.NewsInfo
 import javax.inject.Inject
 
 class NewsMapper @Inject constructor() {
 
-    fun mapDtoToDbModel(dto: NewsInfoDto) = NewsInfoDbModel(
+    fun mapDtoToDbModel(dto: NewsInfoDto) = NewsDBO(
         id = dto.id,
         guid = dto.guid,
         imageUrl = dto.imageUrl,
@@ -22,7 +22,7 @@ class NewsMapper @Inject constructor() {
         return dto.name
     }
 
-    fun mapDbModelToEntity(dbModel: NewsInfoDbModel) = NewsInfo(
+    fun mapDbModelToEntity(dbModel: NewsDBO) = NewsInfo(
         id = dbModel.id,
         guid = dbModel.guid,
         imageUrl = dbModel.imageUrl,
