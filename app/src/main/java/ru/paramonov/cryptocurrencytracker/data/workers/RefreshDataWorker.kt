@@ -1,4 +1,4 @@
-package com.example.cryptoapp.data.workers
+package ru.paramonov.cryptocurrencytracker.data.workers
 
 import android.content.Context
 import androidx.work.CoroutineWorker
