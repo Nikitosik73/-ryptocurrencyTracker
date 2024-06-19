@@ -1,10 +1,9 @@
-package com.example.cryptoapp.data.workers
+package ru.paramonov.cryptocurrencytracker.data.workers
 
 import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import ru.paramonov.cryptocurrencytracker.data.workers.ChildWorkerFactory
 import javax.inject.Inject
 import javax.inject.Provider
 

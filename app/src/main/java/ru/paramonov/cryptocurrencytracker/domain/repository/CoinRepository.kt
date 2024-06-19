@@ -8,4 +8,6 @@ interface CoinRepository {
     fun getCoinInfoList(): Flow<List<CoinInfo>>
 
     fun getCoinInfo(fromSymbol: String): Flow<CoinInfo>
+
+    fun loadData()
 }

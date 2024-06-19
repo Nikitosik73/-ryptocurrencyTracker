@@ -1,4 +1,4 @@
-package ru.paramonov.cryptocurrencytracker.domain
+package ru.paramonov.cryptocurrencytracker.domain.usecase
 
 import ru.paramonov.cryptocurrencytracker.domain.repository.CoinRepository
 
