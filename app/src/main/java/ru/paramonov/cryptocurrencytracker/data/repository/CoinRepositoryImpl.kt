@@ -3,10 +3,10 @@ package ru.paramonov.cryptocurrencytracker.data.repository
 import android.app.Application
 import androidx.work.ExistingWorkPolicy
 import androidx.work.WorkManager
-import com.example.cryptoapp.data.mapper.CoinMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.paramonov.cryptocurrencytracker.data.database.dao.CoinInfoDao
+import ru.paramonov.cryptocurrencytracker.data.mapper.CoinMapper
 import ru.paramonov.cryptocurrencytracker.data.workers.RefreshDataWorker
 import ru.paramonov.cryptocurrencytracker.domain.entity.CoinInfo
 import ru.paramonov.cryptocurrencytracker.domain.repository.CoinRepository
