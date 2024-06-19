@@ -1,4 +1,4 @@
-package com.example.cryptoapp.data.mapper
+package ru.paramonov.cryptocurrencytracker.data.mapper
 
 import com.google.gson.Gson
 import ru.paramonov.cryptocurrencytracker.data.database.model.CoinInfoDBO

@@ -6,11 +6,10 @@ import androidx.work.ListenableWorker
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkerParameters
-import com.example.cryptoapp.data.mapper.CoinMapper
 import kotlinx.coroutines.delay
 import ru.paramonov.cryptocurrencytracker.data.database.dao.CoinInfoDao
+import ru.paramonov.cryptocurrencytracker.data.mapper.CoinMapper
 import ru.paramonov.cryptocurrencytracker.data.network.apiservice.ApiService
-import ru.paramonov.cryptocurrencytracker.data.workers.ChildWorkerFactory
 import javax.inject.Inject
 
 class RefreshDataWorker(

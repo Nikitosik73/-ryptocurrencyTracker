@@ -8,9 +8,9 @@ import ru.paramonov.cryptocurrencytracker.data.database.dao.NewsDao
 
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun NewsInfoDao(): NewsDao
+    abstract fun newsDao(): NewsDao
 
-    abstract fun CoinInfoDao(): CoinInfoDao
+    abstract fun coinInfoDao(): CoinInfoDao
 
     companion object {
         private const val NAME_DB = "main.db"
