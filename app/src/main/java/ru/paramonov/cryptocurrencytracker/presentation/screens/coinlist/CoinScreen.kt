@@ -1,0 +1,1 @@
+package ru.paramonov.cryptocurrencytracker.presentation.screens.coinlist

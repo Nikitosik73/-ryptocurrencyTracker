@@ -1,15 +1,19 @@
 package ru.paramonov.cryptocurrencytracker
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import ru.paramonov.cryptocurrencytracker.presentation.screens.main.MainScreen
-import ru.paramonov.cryptocurrencytracker.presentation.screens.registaration.RegistrationScreen
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import ru.paramonov.cryptocurrencytracker.presentation.app.getApplicationComponent
+import ru.paramonov.cryptocurrencytracker.presentation.screens.coinlist.CoinViewModel
 import ru.paramonov.cryptocurrencytracker.presentation.ui.theme.СryptocurrencyTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,12 +23,21 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             СryptocurrencyTrackerTheme {
-                var isAuth by remember { mutableStateOf(false) }
+//                var isAuth by remember { mutableStateOf(false) }
+//
+//                if (isAuth) {
+//                    MainScreen()
+//                } else {
+//                    RegistrationScreen(onRegistrationClick = { isAuth = true })
+//                }
+                Column(
+                    modifier = Modifier.fillMaxSize().background(color = Color.LightGray)
+                ) {
+                    val component = getApplicationComponent()
+                    val viewModel: CoinViewModel = viewModel(factory = component.getViewModel())
+                    val coinInfo = viewModel.coinInfoList.collectAsStateWithLifecycle(initialValue = emptyList())
 
-                if (isAuth) {
-                    MainScreen()
-                } else {
-                    RegistrationScreen(onRegistrationClick = { isAuth = true })
+                    Log.d("coin_worker", coinInfo.value.toString())
                 }
             }
         }
