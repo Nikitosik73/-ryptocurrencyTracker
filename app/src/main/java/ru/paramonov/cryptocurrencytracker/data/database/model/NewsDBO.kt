@@ -1,4 +1,4 @@
-package ru.paramonov.cryptocurrencytracker.database.model
+package ru.paramonov.cryptocurrencytracker.data.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

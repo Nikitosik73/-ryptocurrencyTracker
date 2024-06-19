@@ -1,14 +1,14 @@
-package ru.paramonov.cryptocurrencytracker.database.dao
+package ru.paramonov.cryptocurrencytracker.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import ru.paramonov.cryptocurrencytracker.database.model.NewsDBO
+import ru.paramonov.cryptocurrencytracker.data.database.model.NewsDBO
 
 @Dao
-interface NewsInfoDao {
+interface NewsDao {
 
     @Query("select * from news")
     fun getAllNews(): Flow<List<NewsDBO>>

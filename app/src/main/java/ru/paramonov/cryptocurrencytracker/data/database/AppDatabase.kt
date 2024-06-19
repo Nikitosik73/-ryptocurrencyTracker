@@ -1,14 +1,14 @@
-package ru.paramonov.cryptocurrencytracker.database
+package ru.paramonov.cryptocurrencytracker.data.database
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import ru.paramonov.cryptocurrencytracker.database.dao.CoinInfoDao
-import ru.paramonov.cryptocurrencytracker.database.dao.NewsInfoDao
+import ru.paramonov.cryptocurrencytracker.data.database.dao.CoinInfoDao
+import ru.paramonov.cryptocurrencytracker.data.database.dao.NewsDao
 
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun NewsInfoDao(): NewsInfoDao
+    abstract fun NewsInfoDao(): NewsDao
 
     abstract fun CoinInfoDao(): CoinInfoDao
 

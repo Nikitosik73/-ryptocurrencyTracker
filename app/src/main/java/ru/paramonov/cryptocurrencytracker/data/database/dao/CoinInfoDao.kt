@@ -1,11 +1,11 @@
-package ru.paramonov.cryptocurrencytracker.database.dao
+package ru.paramonov.cryptocurrencytracker.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import ru.paramonov.cryptocurrencytracker.database.model.CoinInfoDBO
+import ru.paramonov.cryptocurrencytracker.data.database.model.CoinInfoDBO
 
 @Dao
 interface CoinInfoDao {
