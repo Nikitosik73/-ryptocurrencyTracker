@@ -84,4 +84,6 @@ dependencies {
 
 //    implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
+
+    implementation(libs.worker.core)
 }
