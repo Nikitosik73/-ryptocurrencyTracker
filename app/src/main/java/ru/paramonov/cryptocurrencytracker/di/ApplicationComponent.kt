@@ -1,14 +1,11 @@
-package com.example.cryptoapp.di
+package ru.paramonov.cryptocurrencytracker.di
 
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
 import ru.paramonov.cryptocurrencytracker.di.DataModule
-import ru.paramonov.cryptocurrencytracker.di.RetrofitModule
-import ru.paramonov.cryptocurrencytracker.di.RoomModule
-import ru.paramonov.cryptocurrencytracker.di.ViewModelModule
-import ru.paramonov.cryptocurrencytracker.di.WorkerModule
 import ru.paramonov.cryptocurrencytracker.di.annotation.ApplicationScope
+import ru.paramonov.cryptocurrencytracker.presentation.ViewModelFactory
 
 @ApplicationScope
 @Component(
@@ -21,6 +18,8 @@ import ru.paramonov.cryptocurrencytracker.di.annotation.ApplicationScope
     ]
 )
 interface ApplicationComponent {
+
+    fun getViewModelFactory(): ViewModelFactory
 
     @Component.Factory
     interface Factory {
