@@ -7,7 +7,7 @@ import ru.paramonov.cryptocurrencytracker.data.network.apiservice.ApiService
 
 object ApiFactory {
 
-    private const val BASE_URL = "https://min-api.cryptocompare.com/data/"
+    private val BASE_URL = "https://api.polygon.io/v2/"
 
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())

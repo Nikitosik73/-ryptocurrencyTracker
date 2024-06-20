@@ -56,6 +56,7 @@ import ru.paramonov.cryptocurrencytracker.R
 import ru.paramonov.cryptocurrencytracker.domain.entity.CoinInfo
 import ru.paramonov.cryptocurrencytracker.presentation.app.getApplicationComponent
 import ru.paramonov.cryptocurrencytracker.presentation.screens.coinlist.CoinViewModel
+import ru.paramonov.cryptocurrencytracker.presentation.screens.deteilcoin.terminal.component.Terminal
 
 @Composable
 fun DetailCoinInfo(
@@ -111,7 +112,9 @@ private fun DetailCoinContent(
             }
             item {
                 Card(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .height(650.dp),
                     shape = RoundedCornerShape(size = 20.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = Color.White
@@ -127,6 +130,9 @@ private fun DetailCoinContent(
                         color = Color.Black,
                         modifier = Modifier.padding(16.dp)
                     )
+                    Box(modifier = Modifier.weight(1f)) {
+                        Terminal()
+                    }
                 }
             }
             item {
