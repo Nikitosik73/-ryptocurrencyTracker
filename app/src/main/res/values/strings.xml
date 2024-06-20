@@ -31,4 +31,8 @@
     <string name="timeframe_1_hour">H1</string>
     <string name="timeframe_1_day">D1</string>
     <string name="message_error">Сервера перегружены! Подждите минуту.</string>
+    <string name="news_info">Новости</string>
+    <string name="detail_news_info">Детальная информация</string>
+    <string name="description">Описание</string>
+    <string name="full_description">Подробное описание</string>
 </resources>

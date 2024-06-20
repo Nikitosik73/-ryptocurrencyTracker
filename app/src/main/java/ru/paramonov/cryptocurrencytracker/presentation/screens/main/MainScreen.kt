@@ -26,11 +26,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import ru.paramonov.cryptocurrencytracker.presentation.screens.ProfileScreen
 import ru.paramonov.cryptocurrencytracker.presentation.screens.chat.ChatScreen
 import ru.paramonov.cryptocurrencytracker.presentation.screens.coinlist.CoinListScreen
+import ru.paramonov.cryptocurrencytracker.presentation.screens.detailnews.DetailNewsScreen
 import ru.paramonov.cryptocurrencytracker.presentation.screens.deteilcoin.DetailCoinInfo
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.AppNavGraph
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.NavItem
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.NavigationState
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.rememberNavigationState
+import ru.paramonov.cryptocurrencytracker.presentation.screens.news.NewsScreen
 
 
 @Composable
@@ -61,10 +63,15 @@ fun MainScreen() {
                 )
             },
             newsScreenContent = {
-
+                NewsScreen(
+                    paddingValues = innerPadding,
+                    onClickNews = { newsInfo ->
+                        navigationState.navigateToDetailNews(newsInfo = newsInfo)
+                    }
+                )
             },
-            detailNewsScreenContent = {
-
+            detailNewsScreenContent = { newsInfo ->
+                DetailNewsScreen(paddingValues = innerPadding, newsInfo = newsInfo)
             },
             chatScreenContent = {
                 ChatScreen(coinName = it) {
