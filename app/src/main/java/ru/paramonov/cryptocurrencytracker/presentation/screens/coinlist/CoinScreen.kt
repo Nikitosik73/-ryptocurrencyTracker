@@ -1,6 +1,7 @@
 package ru.paramonov.cryptocurrencytracker.presentation.screens.coinlist
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -48,6 +49,8 @@ fun CoinListScreen(
     val component = getApplicationComponent()
     val viewModel: CoinViewModel = viewModel(factory = component.getViewModel())
     val coinInfo = viewModel.coinInfoList.collectAsStateWithLifecycle(initialValue = emptyList())
+
+    Log.d("news_test", coinInfo.value.toString())
 
     CoinListContent(
         paddingValues = paddingValues,
