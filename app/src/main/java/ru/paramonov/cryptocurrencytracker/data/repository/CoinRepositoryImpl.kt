@@ -1,21 +1,22 @@
 package ru.paramonov.cryptocurrencytracker.data.repository
 
-import android.app.Application
-import androidx.work.ExistingWorkPolicy
-import androidx.work.WorkManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import ru.paramonov.cryptocurrencytracker.data.database.dao.CoinInfoDao
 import ru.paramonov.cryptocurrencytracker.data.mapper.CoinMapper
-import ru.paramonov.cryptocurrencytracker.data.workers.RefreshDataWorker
+import ru.paramonov.cryptocurrencytracker.data.network.apiservice.ApiService
 import ru.paramonov.cryptocurrencytracker.domain.entity.CoinInfo
 import ru.paramonov.cryptocurrencytracker.domain.repository.CoinRepository
 import javax.inject.Inject
 
 class CoinRepositoryImpl @Inject constructor(
-    private val application: Application,
     private val mapper: CoinMapper,
-    private val coinDao: CoinInfoDao
+    private val coinDao: CoinInfoDao,
+    private val scope: CoroutineScope,
+    private val apiService: ApiService
 ) : CoinRepository {
 
     override fun getCoinInfoList(): Flow<List<CoinInfo>> {
@@ -35,11 +36,21 @@ class CoinRepositoryImpl @Inject constructor(
     }
 
     override fun loadData() {
-        val workManager = WorkManager.getInstance(application)
-        workManager.enqueueUniqueWork(
-            RefreshDataWorker.NAME,
-            ExistingWorkPolicy.REPLACE,
-            RefreshDataWorker.makeRequest()
-        )
+        scope.launch {
+            while (true) {
+                try {
+                    val topCoins = apiService.getTopCoinsInfo(limit = 50)
+                    val coinNames = mapper.mapNamesListToString(topCoins)
+                    val jsonContainer = apiService.getFullPriceList(fSyms = coinNames)
+                    val listCoinInfoDto = mapper.mapJsonContainerToDto(jsonContainer)
+                    val listDbModels = listCoinInfoDto.map { dto ->
+                        mapper.mapDtoToDbModel(dto)
+                    }
+                    coinDao.insertPriceList(listDbModels)
+                } catch (_: Exception) {
+                }
+                delay(10000)
+            }
+        }
     }
 }

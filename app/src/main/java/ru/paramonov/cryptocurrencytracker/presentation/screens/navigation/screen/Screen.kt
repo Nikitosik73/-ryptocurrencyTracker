@@ -1,6 +1,8 @@
 package ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.screen
 
 import android.net.Uri
+import com.google.gson.Gson
+import ru.paramonov.cryptocurrencytracker.domain.entity.NewsInfo
 
 sealed class Screen(
     val route: String
@@ -25,6 +27,12 @@ sealed class Screen(
 
     data object DetailNewsScreen : Screen(route = ROUTE_DETAIL_NEWS_SCREEN) {
 
+        private const val ARGS_ROUTE_DETAIL_NEWS = "news_detail"
+
+        fun getRouteWithArgs(newsInfo: NewsInfo): String {
+            val news = Gson().toJson(newsInfo).encode()
+            return "$ARGS_ROUTE_DETAIL_NEWS/$news"
+        }
     }
 
     data object ChatCoinScreen : Screen(route = ROUTE_CHAT_SCREEN) {

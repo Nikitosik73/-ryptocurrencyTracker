@@ -33,6 +33,7 @@ import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -103,7 +104,7 @@ private fun MessageList(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = LightGrey)
+            .background(color = LightGrey.copy(alpha = 0.5f))
     ) {
         LazyColumn(
             contentPadding = PaddingValues(
@@ -170,6 +171,7 @@ fun MessageItem(
             modifier = Modifier
                 .wrapContentWidth()
                 .padding(all = 8.dp)
+                .shadow(elevation = 8.dp)
                 .clip(shape = CircleShape)
                 .background(color = Color.White),
             verticalAlignment = Alignment.CenterVertically
