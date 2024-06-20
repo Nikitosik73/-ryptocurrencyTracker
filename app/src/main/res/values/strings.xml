@@ -25,4 +25,10 @@
     <string name="price_high_day">Максимальная цена за день:</string>
     <string name="last_market">Последняя торговая площадка:</string>
     <string name="graphic">График криптовалюты</string>
+    <string name="timeframe_5_minute">M5</string>
+    <string name="timeframe_15_minute">M15</string>
+    <string name="timeframe_30_minute">M30</string>
+    <string name="timeframe_1_hour">H1</string>
+    <string name="timeframe_1_day">D1</string>
+    <string name="message_error">Сервера перегружены! Подждите минуту.</string>
 </resources>
