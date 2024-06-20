@@ -1,11 +1,15 @@
 package ru.paramonov.cryptocurrencytracker.data.database
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import ru.paramonov.cryptocurrencytracker.data.database.dao.CoinInfoDao
 import ru.paramonov.cryptocurrencytracker.data.database.dao.NewsDao
+import ru.paramonov.cryptocurrencytracker.data.database.model.CoinInfoDBO
+import ru.paramonov.cryptocurrencytracker.data.database.model.NewsDBO
 
+@Database(entities = [CoinInfoDBO::class, NewsDBO::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun newsDao(): NewsDao

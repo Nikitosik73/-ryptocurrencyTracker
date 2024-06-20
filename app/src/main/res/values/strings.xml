@@ -10,4 +10,19 @@
     <string name="news_screen">News</string>
     <string name="chat_screen">Chat</string>
     <string name="profile_screen">Profile</string>
+    <string name="full_information">Подробная информация</string>
+    <string name="main_town">Родной город: </string>
+    <string name="name_profile">Имя пользователя: </string>
+    <string name="b_date">День Рождения: </string>
+    <string name="all_posts">Все записи</string>
+    <string name="navigation_item_profile">Профиль</string>
+    <string name="detail_coin_info">Детальная информация</string>
+    <string name="chat_coin">Чат криптовалюты</string>
+    <string name="name_full_coin">Название криптовалюты</string>
+    <string name="lastupdate">Последнее обновление:</string>
+    <string name="price">Цена:</string>
+    <string name="price_low_day">Минимальная цена за день:</string>
+    <string name="price_high_day">Максимальная цена за день:</string>
+    <string name="last_market">Последняя торговая площадка:</string>
+    <string name="graphic">График криптовалюты</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import ru.paramonov.cryptocurrencytracker.domain.entity.NewsInfo
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.screen.Screen
 
 class NavigationState(
@@ -27,6 +28,10 @@ class NavigationState(
 
     fun navigateToChat(coinName: String) {
         navHostController.navigate(route = Screen.ChatCoinScreen.getRouteWithArgs(coinName = coinName))
+    }
+
+    fun navigateToDetailNews(newsInfo: NewsInfo) {
+        navHostController.navigate(route = Screen.DetailNewsScreen.getRouteWithArgs(newsInfo = newsInfo))
     }
 }
 

@@ -86,4 +86,6 @@ dependencies {
     implementation(libs.lifecycle.runtime.compose)
 
     implementation(libs.worker.core)
+
+    implementation(libs.gson)
 }

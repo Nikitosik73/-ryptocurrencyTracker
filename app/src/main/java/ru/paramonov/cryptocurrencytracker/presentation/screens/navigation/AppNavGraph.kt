@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import ru.paramonov.cryptocurrencytracker.domain.entity.NewsInfo
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.screen.Screen
 
 @Composable
@@ -12,7 +13,7 @@ fun AppNavGraph(
     coinListScreenContent: @Composable () -> Unit,
     detailCoinScreenContent: @Composable (String) -> Unit,
     newsScreenContent: @Composable () -> Unit,
-    detailNewsScreenContent: @Composable (String) -> Unit,
+    detailNewsScreenContent: @Composable (NewsInfo) -> Unit,
     chatScreenContent: @Composable (String) -> Unit,
     profileScreenContent: @Composable () -> Unit
 ) {

@@ -5,14 +5,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,12 +23,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
+import ru.paramonov.cryptocurrencytracker.presentation.screens.ProfileScreen
 import ru.paramonov.cryptocurrencytracker.presentation.screens.chat.ChatScreen
+import ru.paramonov.cryptocurrencytracker.presentation.screens.coinlist.CoinListScreen
+import ru.paramonov.cryptocurrencytracker.presentation.screens.deteilcoin.DetailCoinInfo
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.AppNavGraph
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.NavItem
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.NavigationState
 import ru.paramonov.cryptocurrencytracker.presentation.screens.navigation.rememberNavigationState
-import ru.paramonov.cryptocurrencytracker.presentation.ui.theme.LightGrey
 
 
 @Composable
@@ -40,43 +39,41 @@ fun MainScreen() {
     val navigationState = rememberNavigationState()
 
     Scaffold(
-        bottomBar = {
-            BottomNavBar(navigationState = navigationState)
-        }
+        bottomBar = { BottomNavBar(navigationState = navigationState) }
     ) { innerPadding ->
         AppNavGraph(
             navHostController = navigationState.navHostController,
             coinListScreenContent = {
-                Column(modifier = Modifier.fillMaxSize().background(LightGrey).padding(innerPadding)) {
-                    Text(text = "coinListScreenContent")
-                    Button(onClick = { navigationState.navigateToDetailCoin(coinName = "KAL") }) {
-
+                CoinListScreen(
+                    paddingValues = innerPadding,
+                    onClickCoin = { coinName ->
+                        navigationState.navigateToDetailCoin(coinName = coinName)
                     }
-                }
+                )
             },
-            detailCoinScreenContent = {
-                Column(modifier = Modifier.padding(innerPadding)) {
-                    Text(text = it)
-                    Button(onClick = { navigationState.navigateToChat(coinName = "KAL") }) {
-
+            detailCoinScreenContent = { fromSymbol ->
+                DetailCoinInfo(
+                    paddingValues = innerPadding,
+                    fromSymbol = fromSymbol,
+                    onClickChatCoin = {
+                        navigationState.navigateToChat(coinName = fromSymbol)
                     }
-                }
+                )
             },
             newsScreenContent = {
-                Column(modifier = Modifier.padding(innerPadding)) {
-                    Text(text = "newsScreenContent")
-                    Button(onClick = { }) {
 
-                    }
-                }
             },
-            detailNewsScreenContent = {},
+            detailNewsScreenContent = {
+
+            },
             chatScreenContent = {
                 ChatScreen(coinName = it) {
                     navigationState.navHostController.popBackStack()
                 }
             },
-            profileScreenContent = {}
+            profileScreenContent = {
+                ProfileScreen(paddingValues = innerPadding)
+            }
         )
     }
 }
@@ -92,7 +89,7 @@ private fun BottomNavBar(navigationState: NavigationState) {
 
     Row(
         modifier = Modifier
-            .padding(vertical = 8.dp, horizontal = 10.dp)
+            .padding(vertical = 20.dp, horizontal = 10.dp)
             .clip(shape = CircleShape)
             .background(color = Color.White)
             .fillMaxWidth()
@@ -130,7 +127,7 @@ private fun BottomNavItem(
         if (selectedItem) Color(0xFF5EDE99) else Color.Transparent
 
     val contentColor =
-        if (selectedItem) Color.White else LightGrey
+        if (selectedItem) Color.White else Color.Black
 
     Box(
         modifier = Modifier
